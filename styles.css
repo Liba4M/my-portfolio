@@ -4,7 +4,7 @@
   --text-color: #000000;
   --card-bg: #f9f9f9;
   --primary-font: 'DM Sans', sans-serif;
-  --name-font: 'Kapakana', cursive;
+  --name-font: 'Italianno', cursive;
 }
 
 [data-theme='dark'] {
@@ -31,10 +31,10 @@ body {
 }
 h1, h2, h3 {
   color: var(--text-color);
-  --name-font: 'Kapakana', cursive;
+  --name-font: 'Italianno', cursive;
 }
 header h1 {
-  font-family: 'Kapakana', cursive;
+  font-family: 'Italianno', cursive;
   font-size: 72px;
   text-align: center;
   margin-bottom: 20px;
@@ -108,7 +108,7 @@ header {
   transition: background-color 0.3s ease, color 0.3s ease;
 
   text-align: center;
-  --name-font: 'Kapakana', cursive;
+  --name-font: 'Italianno', cursive;
   padding: 80px 20px 40px;
   display: flex;
   flex-direction: column;
@@ -128,7 +128,7 @@ header {
   padding: 0 50px;
   position: relative;
   display: inline-block;
-  background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #f6d365);
+  background: linear-gradient(90deg, #fad0c4, #fbc2eb, #a6c1ee);
   background-size: 300%;
 
   /* Text clipping for shimmer effect */
@@ -305,3 +305,35 @@ h2 {
   background-color: rgba(0,0,0,0.2);
   border-radius: 3px;
 }
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: var(--text-color);
+  opacity: 0.2;
+  margin: 1.2rem 0;
+  transition: background-color 0.3s ease;
+}
+.project a {
+  color: var(--text-color);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.project a:hover {
+  color: #0077cc;
+}
+
+#about {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  color: var(--text-color);
+  z-index: 1;
+  overflow: hidden;
+}
+

@@ -22,7 +22,7 @@
 
   --font-display: 'Orbitron', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-cursive: 'Alex Brush', cursive;
+  --font-cursive: 'Italianno', cursive;
 
   --glow-pink: 0 0 8px rgba(179, 41, 79, 0.55), 0 0 24px rgba(179, 41, 79, 0.28);
   --glow-violet: 0 0 8px rgba(110, 107, 116, 0.5), 0 0 24px rgba(110, 107, 116, 0.22);
@@ -414,7 +414,7 @@ section {
 .glitch-heading.cursive-name {
   font-family: var(--font-cursive);
   font-weight: 400;
-  font-size: clamp(3.6rem, 12vw, 7rem);
+  font-size: clamp(4.4rem, 15vw, 8.5rem);
   letter-spacing: 0;
   line-height: 1.15;
   color: var(--text);

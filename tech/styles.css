@@ -882,6 +882,21 @@ footer .prompt {
   margin-right: 6px;
 }
 
+.footer-sub {
+  margin-top: 10px;
+  font-size: 0.78rem;
+}
+
+.footer-sub a {
+  color: var(--text-mute);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-sub a:hover {
+  color: var(--pink-soft);
+}
+
 /* ---------- reveal-on-scroll ---------- */
 
 .reveal {

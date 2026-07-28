@@ -45,6 +45,20 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   });
 })();
 
+/* ---------- project media fallback ---------- */
+
+(function projectMedia() {
+  document.querySelectorAll('.project-media-img').forEach((img) => {
+    if (img.complete && img.naturalWidth === 0) {
+      img.style.display = 'none';
+      return;
+    }
+    img.addEventListener('error', () => {
+      img.style.display = 'none';
+    });
+  });
+})();
+
 /* ---------- matrix rain background ---------- */
 
 (function matrixRain() {

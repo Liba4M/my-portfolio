@@ -58,3 +58,56 @@ navMenu.querySelectorAll('a').forEach((link) => {
     });
   });
 })();
+
+/* ---------- scroll animations (GSAP) ---------- */
+
+(function scrollAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance, plays once on load
+  gsap.from('.hero > *', {
+    opacity: 0,
+    y: 24,
+    duration: 0.8,
+    stagger: 0.12,
+    ease: 'power2.out',
+  });
+
+  // Section headings fade up as they enter view
+  gsap.utils.toArray('.section-heading, .section-sub').forEach((el) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 20,
+      duration: 0.6,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%' },
+    });
+  });
+
+  // Cards, steps, and rows reveal individually as they scroll into view
+  const revealSelectors = [
+    '.approach-card',
+    '.lesson-step',
+    '.subject-grid',
+    '.pricing-card',
+    '.testimonial-card',
+    '.academy-card',
+    '.about-grid',
+    '.enquiry-form',
+    '.contact-card',
+    '.approach-list li',
+  ];
+
+  gsap.utils.toArray(revealSelectors.join(',')).forEach((el) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 30,
+      duration: 0.7,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' },
+    });
+  });
+})();

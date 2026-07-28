@@ -648,6 +648,103 @@ section {
   animation: blink 1s steps(1) infinite;
 }
 
+/* ---------- welcome modal ---------- */
+
+.welcome-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6, 4, 8, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.welcome-modal.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.welcome-modal-card {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+  background: rgba(20, 17, 20, 0.92);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 40px 32px 32px;
+  text-align: center;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(179, 41, 79, 0.15);
+}
+
+.welcome-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-mute);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.welcome-modal-close:hover {
+  color: var(--pink);
+}
+
+.welcome-modal-photo {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-strong);
+  box-shadow: var(--glow-pink);
+  margin-bottom: 20px;
+}
+
+.welcome-modal-text {
+  text-align: left;
+  font-size: 0.88rem;
+  min-height: 84px;
+  margin-bottom: 24px;
+}
+
+.welcome-modal-text p {
+  margin-bottom: 10px;
+  color: var(--text-dim);
+}
+
+.welcome-modal-text .prompt {
+  color: var(--pink);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.welcome-modal-text .type-line {
+  padding-left: 0;
+  color: var(--text);
+}
+
+.welcome-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.welcome-modal-actions .btn-ghost {
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+
 /* ---------- projects ---------- */
 
 .project-grid {
@@ -953,6 +1050,10 @@ footer .prompt {
 
   .header-cta span {
     display: none;
+  }
+
+  .header-cta--tutoring span {
+    display: inline;
   }
 
   .header-cta {

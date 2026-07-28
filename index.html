@@ -16,13 +16,28 @@
 </head>
 <body>
 
+  <div class="welcome-modal" id="welcome-modal">
+    <div class="welcome-modal-card">
+      <button class="welcome-modal-close" id="welcome-modal-close" aria-label="Close">&times;</button>
+      <img src="/images/profile2.jpg" alt="Liba Mahmood" class="welcome-modal-photo" />
+      <div class="welcome-modal-text" id="welcome-modal-text">
+        <p><span class="prompt">$</span> <span class="type-line" data-line="Hi! Welcome to my website"></span><span class="cursor-blink">&#9608;</span></p>
+        <p><span class="type-line" data-line="Are you looking for online tutoring, or want to explore my portfolio?"></span></p>
+      </div>
+      <div class="welcome-modal-actions">
+        <a href="/tutoring/" class="btn-solid">🌹 Online Tutoring</a>
+        <button class="btn-ghost" id="welcome-modal-portfolio" type="button"><i class="fas fa-terminal"></i> Explore Portfolio</button>
+      </div>
+    </div>
+  </div>
+
   <canvas id="matrix-rain" aria-hidden="true"></canvas>
   <div class="scanlines" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
 
   <header>
     <div class="header-inner">
-      <a href="#top" class="logo">
+      <a href="/tutoring/" class="logo" title="Switch to tutoring site">
         <span class="logo-bracket">&lt;</span>Liba<span class="logo-cursor">_</span><span class="logo-bracket">/&gt;</span>
       </a>
 
@@ -37,8 +52,8 @@
         <i class="fas fa-moon" aria-hidden="true"></i>
       </button>
 
-      <a class="btn-ghost header-cta" href="/tutoring/">
-         <span>Tutoring</span>
+      <a class="btn-ghost header-cta header-cta--tutoring" href="/tutoring/">
+        <span>Tutoring</span>
       </a>
 
       <a class="btn-ghost header-cta" href="https://github.com/Liba4M" target="_blank" rel="noopener">

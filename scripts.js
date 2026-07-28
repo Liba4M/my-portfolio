@@ -93,19 +93,22 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 /* ---------- terminal typewriter effect ---------- */
 
-(function typeTerminal() {
-  const lines = document.querySelectorAll('#typed-terminal .type-line');
+function typeLines(lines, onDone) {
   if (!lines.length) return;
 
   if (prefersReducedMotion) {
     lines.forEach((line) => { line.textContent = line.dataset.line; });
+    if (onDone) onDone();
     return;
   }
 
   let lineIndex = 0;
 
   function typeLine() {
-    if (lineIndex >= lines.length) return;
+    if (lineIndex >= lines.length) {
+      if (onDone) onDone();
+      return;
+    }
     const el = lines[lineIndex];
     const text = el.dataset.line;
     let charIndex = 0;
@@ -122,6 +125,37 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   }
 
   typeLine();
+}
+
+typeLines(document.querySelectorAll('#typed-terminal .type-line'));
+
+/* ---------- welcome modal ---------- */
+
+(function welcomeModal() {
+  const modal = document.getElementById('welcome-modal');
+  if (!modal) return;
+
+  const closeBtn = document.getElementById('welcome-modal-close');
+  const portfolioBtn = document.getElementById('welcome-modal-portfolio');
+
+  if (sessionStorage.getItem('welcomeSeen') === 'true') {
+    modal.classList.add('is-hidden');
+    return;
+  }
+
+  sessionStorage.setItem('welcomeSeen', 'true');
+
+  function closeModal() {
+    modal.classList.add('is-hidden');
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  portfolioBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  typeLines(modal.querySelectorAll('.type-line'));
 })();
 
 /* ---------- scroll reveal ---------- */

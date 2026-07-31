@@ -475,7 +475,9 @@ section {
 .lessons-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 32px 4px;
+  column-gap: 10px;
+  align-items: start;
+  padding-bottom: 58px;
 }
 
 .lesson-step {
@@ -485,19 +487,34 @@ section {
   border-radius: var(--radius);
   padding: 32px 18px 26px;
   text-align: center;
+  box-shadow: 0 10px 24px rgba(122, 30, 61, 0.08);
+}
+
+.lesson-step:nth-child(even) {
+  margin-top: 58px;
 }
 
 .lesson-step:not(:last-child)::after {
-  content: '\f054';
+  content: '\f061';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
   position: absolute;
-  top: 44px;
-  right: -19px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--pink);
   z-index: 2;
   text-shadow: 0 0 10px rgba(122, 30, 61, 0.35);
+}
+
+.lesson-step:nth-child(odd):not(:last-child)::after {
+  bottom: 26px;
+  right: -28px;
+  transform: rotate(35deg);
+}
+
+.lesson-step:nth-child(even):not(:last-child)::after {
+  top: 26px;
+  right: -28px;
+  transform: rotate(-35deg);
 }
 
 @media (max-width: 900px) {
@@ -506,11 +523,18 @@ section {
     gap: 56px;
     max-width: 420px;
     margin: 0 auto;
+    padding-bottom: 0;
   }
 
-  .lesson-step:not(:last-child)::after {
+  .lesson-step:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .lesson-step:nth-child(odd):not(:last-child)::after,
+  .lesson-step:nth-child(even):not(:last-child)::after {
     content: '\f078';
     top: 100%;
+    bottom: auto;
     right: auto;
     left: 50%;
     transform: translateX(-50%);

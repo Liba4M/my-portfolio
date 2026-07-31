@@ -473,82 +473,60 @@ section {
 /* ---------- how lessons work ---------- */
 
 .lessons-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 10px;
-  align-items: start;
-  padding-bottom: 58px;
+  display: flex;
+  flex-direction: column;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 .lesson-step {
   position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 32px 18px 26px;
-  text-align: center;
-  box-shadow: 0 10px 24px rgba(122, 30, 61, 0.08);
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+  padding-bottom: 52px;
 }
 
-.lesson-step:nth-child(even) {
-  margin-top: 58px;
+.lesson-step:last-child {
+  padding-bottom: 0;
 }
 
-.lesson-step:not(:last-child)::after {
-  content: '\f061';
+.lesson-step-marker {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.lesson-step:not(:last-child) .lesson-step-marker::after {
+  content: '';
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  bottom: -52px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, var(--pink), rgba(122, 30, 61, 0.15));
+}
+
+.lesson-step:not(:last-child) .lesson-step-marker::before {
+  content: '\f078';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
   position: absolute;
-  font-size: 1.2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 6px);
+  font-size: 0.8rem;
   color: var(--pink);
   z-index: 2;
-  text-shadow: 0 0 10px rgba(122, 30, 61, 0.35);
-}
-
-.lesson-step:nth-child(odd):not(:last-child)::after {
-  bottom: 26px;
-  right: -28px;
-  transform: rotate(35deg);
-}
-
-.lesson-step:nth-child(even):not(:last-child)::after {
-  top: 26px;
-  right: -28px;
-  transform: rotate(-35deg);
-}
-
-@media (max-width: 900px) {
-  .lessons-grid {
-    grid-template-columns: 1fr;
-    gap: 56px;
-    max-width: 420px;
-    margin: 0 auto;
-    padding-bottom: 0;
-  }
-
-  .lesson-step:nth-child(even) {
-    margin-top: 0;
-  }
-
-  .lesson-step:nth-child(odd):not(:last-child)::after,
-  .lesson-step:nth-child(even):not(:last-child)::after {
-    content: '\f078';
-    top: 100%;
-    bottom: auto;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 14px;
-  }
+  background: var(--bg);
+  padding: 4px 0;
 }
 
 .lesson-step-num {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 30px;
+  position: relative;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: var(--pink);
   color: #fff;
@@ -557,25 +535,45 @@ section {
   justify-content: center;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.85rem;
-  box-shadow: 0 8px 16px rgba(122, 30, 61, 0.3);
+  font-size: 1.1rem;
+  box-shadow: 0 8px 18px rgba(122, 30, 61, 0.3);
 }
 
-.lesson-step i {
-  font-size: 1.5rem;
+.lesson-step-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  text-align: left;
+}
+
+.lesson-step-card i {
+  font-size: 1.4rem;
   color: var(--pink);
-  margin: 10px 0 14px;
+  margin-bottom: 12px;
+  display: block;
 }
 
-.lesson-step h3 {
+.lesson-step-card h3 {
   font-family: var(--font-display);
-  font-size: 0.98rem;
-  margin-bottom: 10px;
+  font-size: 1.02rem;
+  margin-bottom: 8px;
 }
 
-.lesson-step p {
+.lesson-step-card p {
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  .lesson-step {
+    gap: 16px;
+  }
+
+  .lesson-step-card {
+    padding: 20px 20px;
+  }
 }
 
 /* ---------- pricing ---------- */

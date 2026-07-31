@@ -516,6 +516,10 @@ section {
   margin: 0;
 }
 
+.speech-bubble .type-line {
+  padding-left: 0;
+}
+
 .speech-bubble::after {
   content: '';
   position: absolute;

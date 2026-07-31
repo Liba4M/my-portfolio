@@ -142,6 +142,7 @@ function typeLines(lines, onDone) {
 }
 
 typeLines(document.querySelectorAll('#typed-terminal .type-line'));
+typeLines(document.querySelectorAll('.speech-bubble .type-line'));
 
 /* ---------- welcome modal ---------- */
 

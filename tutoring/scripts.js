@@ -59,6 +59,23 @@ navMenu.querySelectorAll('a').forEach((link) => {
   });
 })();
 
+/* ---------- enquiry form honeypot ---------- */
+
+(function enquiryHoneypot() {
+  const form = document.querySelector('.enquiry-form');
+  if (!form) return;
+
+  const honey = form.querySelector('input[name="_honey"]');
+  if (!honey) return;
+
+  form.addEventListener('submit', (e) => {
+    if (honey.value.trim() !== '') {
+      // A hidden field only a bot would fill in — silently drop the submission.
+      e.preventDefault();
+    }
+  });
+})();
+
 /* ---------- scroll animations (GSAP) ---------- */
 
 (function scrollAnimations() {

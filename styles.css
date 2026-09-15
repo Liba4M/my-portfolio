@@ -1061,6 +1061,21 @@ footer .prompt {
   color: var(--pink-soft);
 }
 
+.footer-legal-links {
+  margin-top: 8px;
+  font-size: 0.72rem;
+}
+
+.footer-legal-links a {
+  color: var(--text-mute);
+  text-decoration: none;
+}
+
+.footer-legal-links a:hover {
+  color: var(--pink-soft);
+  text-decoration: underline;
+}
+
 /* ---------- reveal-on-scroll ---------- */
 
 .reveal {
@@ -1146,4 +1161,38 @@ footer .prompt {
   #matrix-rain {
     display: none;
   }
+}
+
+/* ---------- 404 page ---------- */
+
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+}
+
+.error-page .glitch-heading.cursive-name {
+  font-size: clamp(5rem, 20vw, 10rem);
+  margin-bottom: 20px;
+}
+
+.error-message {
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+.error-line {
+  color: var(--pink-soft);
+}
+
+.error-sub {
+  color: var(--text-mute);
+  max-width: 420px;
 }

@@ -897,6 +897,33 @@ section {
   font-family: var(--font-body);
 }
 
+.req {
+  color: #c0392b;
+}
+
+.form-required-note {
+  font-size: 0.8rem;
+  color: var(--text-mute);
+  margin: -6px 0 0;
+}
+
+.field-error {
+  color: #c0392b;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.form-field input.has-error,
+.form-field select.has-error,
+.form-field textarea.has-error {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
+}
+
 .enquiry-form .btn-book {
   align-self: flex-start;
   border: none;

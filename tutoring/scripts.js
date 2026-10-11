@@ -76,6 +76,77 @@ navMenu.querySelectorAll('a').forEach((link) => {
   });
 })();
 
+/* ---------- enquiry form validation ---------- */
+
+(function enquiryValidation() {
+  const form = document.querySelector('.enquiry-form');
+  if (!form) return;
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const phonePattern = /^\+?\d{10,15}$/;
+
+  const rules = [
+    { id: 'name', required: 'Please enter your name.' },
+    {
+      id: 'email',
+      required: 'Please enter your email address.',
+      invalid: 'Please enter a valid email address, e.g. name@example.com.',
+      test: (v) => emailPattern.test(v),
+    },
+    {
+      id: 'phone',
+      invalid: 'Please enter a valid phone number, e.g. 07123 456789.',
+      test: (v) => phonePattern.test(v.replace(/[\s\-().]/g, '')),
+    },
+    { id: 'subject', required: 'Please select a subject.' },
+    { id: 'year_group', required: 'Please select a year group.' },
+    { id: 'preferred_contact', required: 'Please select how you would like to be contacted.' },
+  ];
+
+  function showError(input, message) {
+    let el = input.parentElement.querySelector('.field-error');
+    if (!el) {
+      el = document.createElement('span');
+      el.className = 'field-error';
+      el.setAttribute('role', 'alert');
+      input.parentElement.appendChild(el);
+    }
+    el.textContent = message;
+    input.classList.toggle('has-error', Boolean(message));
+    input.setAttribute('aria-invalid', message ? 'true' : 'false');
+  }
+
+  function validate(rule) {
+    const input = form.querySelector('#' + rule.id);
+    const value = input.value.trim();
+    let message = '';
+    if (!value) {
+      if (rule.required) message = rule.required;
+    } else if (rule.test && !rule.test(value)) {
+      message = rule.invalid;
+    }
+    showError(input, message);
+    return !message;
+  }
+
+  rules.forEach((rule) => {
+    const input = form.querySelector('#' + rule.id);
+    input.addEventListener('blur', () => validate(rule));
+    input.addEventListener('input', () => {
+      if (input.classList.contains('has-error')) validate(rule);
+    });
+  });
+
+  form.addEventListener('submit', (e) => {
+    const results = rules.map((rule) => validate(rule));
+    if (results.includes(false)) {
+      e.preventDefault();
+      const firstBad = rules.find((rule) => form.querySelector('#' + rule.id).classList.contains('has-error'));
+      if (firstBad) form.querySelector('#' + firstBad.id).focus();
+    }
+  });
+})();
+
 /* ---------- scroll animations (GSAP) ---------- */
 
 (function scrollAnimations() {
